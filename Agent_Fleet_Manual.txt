@@ -1,0 +1,63 @@
+Cursor Agent Fleet: Operations Manual
+
+Use these prompts in the Cursor Chat (Ctrl+L or Cmd+L) to deploy your agents.
+
+🕵️ Phase 1: The Audit (The Surveyor)
+
+Goal: Understand the mess before we fix it.
+Prompt:
+
+@Codebase Act as The Surveyor. Scan the repository structure.
+
+List all distinct sub-projects or directories that look like subdomains.
+
+Identify where the "LLM Assistants" code lives (look for OpenAI/Anthropic API calls or Python backend files).
+
+Compare the current file structure against a standard Next.js/React structure and highlight major deviations or "messy" areas.
+
+Generate a WORK_QUEUE.md file listing the top 10 architectural issues found.
+
+🧹 Phase 2: The Cleanup (The Janitor)
+
+Goal: Clear the noise so we can see the signal.
+Prompt:
+
+Act as The Janitor. Read the WORK_QUEUE.md created by The Surveyor.
+
+Identify any "dead" files (files not imported anywhere).
+
+Look for hardcoded API keys (warn me, do not delete yet).
+
+Standardize the .env example files.
+
+Wait for my permission before deleting or moving any files.
+
+🔗 Phase 3: The Integration (The Connector)
+
+Goal: Connect the landing page to the actual assistants.
+Prompt:
+
+Act as The Connector. I need to link the main landing page to my subdomains.
+
+Analyze the routing file (likely next.config.js, middleware.ts, or routes.tsx).
+
+Verify how tech.yoohoo.guru or other subdomains are handled.
+
+Check the code for the LLM Assistants. Are they running as API routes or separate servers?
+
+Propose a plan to unify the navigation bar so users can jump between the main site and the assistants.
+
+💸 Phase 4: The Cash Flow (The Rainmaker)
+
+Goal: Monetize nested subdomains and LLM interactions.
+Prompt:
+
+Act as The Rainmaker. Focus on Nested Subdomain Monetization.
+
+Audit the subdomains for potential "paywalls" or "subscription gates" (e.g., separating free.tool from pro.tool).
+
+Check how the LLM Assistants are costing us money (API usage) and propose a credit/token system.
+
+Look for areas to inject affiliate links or ad-slots within the LLM responses without degrading user experience.
+
+Draft a MONETIZATION_STRATEGY.md outlining specific nested routes to gatekeep.
