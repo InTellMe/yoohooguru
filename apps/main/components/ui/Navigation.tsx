@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/react';
+import { HUBS, getHubUrl } from '@/config/hubs';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -83,6 +84,33 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              <div className="relative group">
+                <button
+                  className="flex items-center space-x-2 text-sm font-medium text-white-80 hover:text-emerald-400 transition-all duration-300"
+                  aria-haspopup="true"
+                  aria-label="Open hub switcher"
+                  type="button"
+                >
+                  <span>Hubs</span>
+                  <svg className="w-4 h-4 text-white-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute left-0 mt-3 w-[520px] rounded-2xl glass-effect-strong border border-white-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl z-50">
+                  <div className="grid grid-cols-2 gap-2 p-4">
+                    {HUBS.map((hub) => (
+                      <Link
+                        key={hub.id}
+                        href={getHubUrl(hub.subdomain)}
+                        className="flex items-center space-x-3 rounded-xl px-3 py-2 text-sm text-white-80 hover:bg-white-10 hover:text-white transition-colors"
+                      >
+                        <span className="text-lg">{hub.emoji}</span>
+                        <span className="font-medium">{hub.label}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* CTA Buttons / User Menu */}
@@ -193,6 +221,24 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              <div className="pt-4 border-t border-white-10">
+                <div className="text-xs uppercase tracking-wider text-white-60 mb-3">
+                  Hub Switcher
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {HUBS.map((hub) => (
+                    <Link
+                      key={hub.id}
+                      href={getHubUrl(hub.subdomain)}
+                      className="flex items-center space-x-2 rounded-lg px-2 py-2 text-sm text-white-80 hover:bg-white-10 hover:text-white transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span className="text-base">{hub.emoji}</span>
+                      <span className="font-medium">{hub.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <div className="pt-4 space-y-3">
                 {!mounted || status === 'loading' ? (
                   <div className="flex justify-center py-3">
