@@ -150,9 +150,9 @@ jobs:
           FIRESTORE_EMULATOR_HOST: localhost:8080
           FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
           JWT_SECRET: test-jwt-secret-key-for-ci-cd-testing-only
-          STRIPE_SECRET_KEY: sk_test_placeholder
-          STRIPE_PUBLISHABLE_KEY: pk_test_placeholder
-          STRIPE_WEBHOOK_SECRET: whsec_placeholder
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_TEST }}
+          STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY_TEST }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET_TEST }}
         continue-on-error: true
 
       - name: Build main app
@@ -271,9 +271,9 @@ jobs:
           FIRESTORE_EMULATOR_HOST: localhost:8080
           FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
           JWT_SECRET: test-jwt-secret-key-for-ci-cd-testing-only
-          STRIPE_SECRET_KEY: sk_test_placeholder
-          STRIPE_PUBLISHABLE_KEY: pk_test_placeholder
-          STRIPE_WEBHOOK_SECRET: whsec_placeholder
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_TEST }}
+          STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY_TEST }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET_TEST }}
           SERVE_FRONTEND: false
 
       - name: Test /health endpoint

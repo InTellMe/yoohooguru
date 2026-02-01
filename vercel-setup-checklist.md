@@ -66,7 +66,7 @@ This configuration ensures all dependencies are built in the correct order befor
 
 **Navigate to:** Settings → Domains
 
-Copy and paste each domain from `vercel-domains-list.txt`:
+Copy and paste each domain listed below (source of truth: `backend/src/config/subdomains.js`):
 
 ### Core Domains (5)
 - [ ] www.yoohoo.guru

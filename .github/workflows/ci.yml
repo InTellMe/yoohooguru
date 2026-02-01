@@ -93,17 +93,17 @@ jobs:
         env:
           NODE_ENV: test
           FIREBASE_PROJECT_ID: yoohoo-dev-testing
-          FIREBASE_API_KEY: AIzaSyTest1234567890KeyForCITestingOnly
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY_TEST }}
           # Use dynamically generated secure SESSION_SECRET
           SESSION_SECRET: ${{ steps.generate-session-secret.outputs.session-secret }}
           JWT_SECRET: test-jwt-secret-key-for-ci-cd-testing-only-not-for-production
-          STRIPE_SECRET_KEY: sk_test_51AbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQr
-          STRIPE_PUBLISHABLE_KEY: pk_test_51AbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQr
-          STRIPE_WEBHOOK_SECRET: whsec_1AbCdEfGhIjKlMnOpQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWx
-          STRIPE_WEBHOOK_ID: we_1AbCdEfGhIjKlMnOpQrStUv
-          STRIPE_GURU_PASS_PRICE_ID: price_1AbCdEfGhIjKlMnOpQrStUvWxYzAbCd
-          STRIPE_SKILL_VERIFICATION_PRICE_ID: price_1SkillVerificationTestId1234567
-          STRIPE_TRUST_SAFETY_PRICE_ID: price_1TrustSafetyTestId1234567890
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY_TEST }}
+          STRIPE_PUBLISHABLE_KEY: ${{ secrets.STRIPE_PUBLISHABLE_KEY_TEST }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET_TEST }}
+          STRIPE_WEBHOOK_ID: ${{ secrets.STRIPE_WEBHOOK_ID_TEST }}
+          STRIPE_GURU_PASS_PRICE_ID: ${{ secrets.STRIPE_GURU_PASS_PRICE_ID_TEST }}
+          STRIPE_SKILL_VERIFICATION_PRICE_ID: ${{ secrets.STRIPE_SKILL_VERIFICATION_PRICE_ID_TEST }}
+          STRIPE_TRUST_SAFETY_PRICE_ID: ${{ secrets.STRIPE_TRUST_SAFETY_PRICE_ID_TEST }}
           # Firebase emulator variables (ONLY for test environment)
           # These MUST NOT be set when NODE_ENV is production or staging
           FIRESTORE_EMULATOR_HOST: localhost:8080
