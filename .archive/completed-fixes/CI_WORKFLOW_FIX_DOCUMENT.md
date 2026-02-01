@@ -137,9 +137,9 @@ FIREBASE_STORAGE_EMULATOR_HOST=localhost:9199
 JWT_SECRET=test-jwt-secret-key-for-ci-cd-testing-only-not-for-production
 
 # Stripe test keys (use Stripe test mode keys)
-STRIPE_SECRET_KEY=sk_test_placeholder
-STRIPE_PUBLISHABLE_KEY=pk_test_placeholder
-STRIPE_WEBHOOK_SECRET=whsec_test_placeholder
+STRIPE_SECRET_KEY=stripe_secret_key_placeholder
+STRIPE_PUBLISHABLE_KEY=stripe_publishable_key_placeholder
+STRIPE_WEBHOOK_SECRET=stripe_webhook_secret_placeholder
 
 # Test CORS origins
 CORS_ORIGIN_PRODUCTION=http://localhost:3000,http://127.0.0.1:3000
@@ -405,12 +405,12 @@ Update the "Run backend tests" step:
     NODE_ENV: test
     FIREBASE_PROJECT_ID: demo-yoohooguru-test
     JWT_SECRET: test-jwt-secret-key-for-ci-cd-testing
-    STRIPE_SECRET_KEY: sk_test_placeholder
-    STRIPE_PUBLISHABLE_KEY: pk_test_placeholder
-    STRIPE_WEBHOOK_SECRET: whsec_test_placeholder
-    STRIPE_WEBHOOK_ID: we_test_placeholder
-    STRIPE_GURU_PASS_PRICE_ID: price_test_placeholder
-    STRIPE_SKILL_VERIFICATION_PRICE_ID: price_test_placeholder
+    STRIPE_SECRET_KEY: stripe_secret_key_placeholder
+    STRIPE_PUBLISHABLE_KEY: stripe_publishable_key_placeholder
+    STRIPE_WEBHOOK_SECRET: stripe_webhook_secret_placeholder
+    STRIPE_WEBHOOK_ID: stripe_webhook_id_placeholder
+    STRIPE_GURU_PASS_PRICE_ID: stripe_price_guru_pass_placeholder
+    STRIPE_SKILL_VERIFICATION_PRICE_ID: stripe_price_skill_verification_placeholder
     STRIPE_TRUST_SAFETY_PRICE_ID: price_test_placeholder
 ```
 

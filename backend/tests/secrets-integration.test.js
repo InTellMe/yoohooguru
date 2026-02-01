@@ -54,12 +54,12 @@ describe('Secrets Integration Tests', () => {
       process.env.SESSION_SECRET = require('crypto').randomBytes(32).toString('hex');
 
       process.env.STRIPE_GURU_PASS_PRICE_ID = 'price_guru_pass_test';
-      process.env.STRIPE_PUBLISHABLE_KEY = 'pk_test_publishable';
-      process.env.STRIPE_SECRET_KEY = 'sk_test_fake_key_for_testing';
+      process.env.STRIPE_PUBLISHABLE_KEY = 'stripe_publishable_key_placeholder';
+      process.env.STRIPE_SECRET_KEY = 'stripe_secret_key_placeholder';
       process.env.STRIPE_SKILL_VERIFICATION_PRICE_ID = 'price_skill_verification_test';
       process.env.STRIPE_TRUST_SAFETY_PRICE_ID = 'price_trust_safety_test';
-      process.env.STRIPE_WEBHOOK_ID = 'we_1S3nQHJF6bibA8neDupDJ3j4';
-      process.env.STRIPE_WEBHOOK_SECRET = 'whsec_fake_webhook_secret_for_testing';
+      process.env.STRIPE_WEBHOOK_ID = 'stripe_webhook_id_placeholder';
+      process.env.STRIPE_WEBHOOK_SECRET = 'stripe_webhook_secret_placeholder';
 
       // Google OAuth Configuration
       process.env.GOOGLE_OAUTH_CLIENT_ID = 'test_google_oauth_client_id';
@@ -81,12 +81,12 @@ describe('Secrets Integration Tests', () => {
 
       // Verify Stripe configuration
       expect(config.stripeGuruPassPriceId).toBe('price_guru_pass_test');
-      expect(config.stripePublishableKey).toBe('pk_test_publishable');
-      expect(config.stripeSecretKey).toBe('sk_test_fake_key_for_testing');
+      expect(config.stripePublishableKey).toBe('stripe_publishable_key_placeholder');
+      expect(config.stripeSecretKey).toBe('stripe_secret_key_placeholder');
       expect(config.stripeSkillVerificationPriceId).toBe('price_skill_verification_test');
       expect(config.stripeTrustSafetyPriceId).toBe('price_trust_safety_test');
-      expect(config.stripeWebhookId).toBe('we_1S3nQHJF6bibA8neDupDJ3j4');
-      expect(config.stripeWebhookSecret).toBe('whsec_fake_webhook_secret_for_testing');
+      expect(config.stripeWebhookId).toBe('stripe_webhook_id_placeholder');
+      expect(config.stripeWebhookSecret).toBe('stripe_webhook_secret_placeholder');
 
       // Verify Google OAuth configuration
       expect(config.googleOAuthClientId).toBe('test_google_oauth_client_id');
@@ -95,7 +95,7 @@ describe('Secrets Integration Tests', () => {
 
     test('should expose payment configuration via API endpoint', async () => {
       // Set Stripe environment variables
-      process.env.STRIPE_PUBLISHABLE_KEY = 'pk_test_api_endpoint';
+      process.env.STRIPE_PUBLISHABLE_KEY = 'stripe_publishable_key_placeholder';
       process.env.STRIPE_GURU_PASS_PRICE_ID = 'price_guru_api_test';
       process.env.STRIPE_SKILL_VERIFICATION_PRICE_ID = 'price_skill_api_test';
       process.env.STRIPE_TRUST_SAFETY_PRICE_ID = 'price_safety_api_test';
@@ -107,7 +107,7 @@ describe('Secrets Integration Tests', () => {
 
       expect(response.status).toBe(200);
       expect(response.body.success).toBe(true);
-      expect(response.body.data.publishableKey).toBe('pk_test_api_endpoint');
+      expect(response.body.data.publishableKey).toBe('stripe_publishable_key_placeholder');
       expect(response.body.data.priceIds.guruPass).toBe('price_guru_api_test');
       expect(response.body.data.priceIds.skillVerification).toBe('price_skill_api_test');
       expect(response.body.data.priceIds.trustSafety).toBe('price_safety_api_test');
@@ -116,15 +116,15 @@ describe('Secrets Integration Tests', () => {
 
     test('should handle webhook configuration correctly', () => {
       // Set webhook configuration as mentioned in the issue
-      process.env.STRIPE_WEBHOOK_ID = 'we_1S3nQHJF6bibA8neDupDJ3j4';
-      process.env.STRIPE_WEBHOOK_SECRET = 'whsec_fake_webhook_from_issue_test';
+      process.env.STRIPE_WEBHOOK_ID = 'stripe_webhook_id_placeholder';
+      process.env.STRIPE_WEBHOOK_SECRET = 'stripe_webhook_secret_placeholder';
       // Set secure SESSION_SECRET for testing
       process.env.SESSION_SECRET = require('crypto').randomBytes(32).toString('hex');
 
       const config = getConfig();
 
-      expect(config.stripeWebhookId).toBe('we_1S3nQHJF6bibA8neDupDJ3j4');
-      expect(config.stripeWebhookSecret).toBe('whsec_fake_webhook_from_issue_test');
+      expect(config.stripeWebhookId).toBe('stripe_webhook_id_placeholder');
+      expect(config.stripeWebhookSecret).toBe('stripe_webhook_secret_placeholder');
     });
   });
 

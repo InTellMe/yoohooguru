@@ -12,7 +12,7 @@ This document describes the implementation of the Stripe pricing table in the yo
 ### Features Implemented
 1. **Stripe Pricing Table Integration**
    - Pricing table ID: `prctbl_1S44QQJF6bibA8neW22850S2`
-   - Publishable key: `pk_live_uDtqCIG6cqKBt1QeIrGVHglz`
+   - Publishable key: `STRIPE_PUBLISHABLE_KEY` (from environment)
    - Supports promo codes
    - Monthly recurring billing
    
