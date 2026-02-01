@@ -14,17 +14,44 @@ export const runtime = 'experimental-edge';
  * - apps/main/ is the only Next.js app
  * - Subdomain pages are at pages/_apps/{subdomain}/index.tsx
  * - Middleware rewrites subdomain requests to /_apps/{subdomain}/ paths
+ *
+ * Session Preservation:
+ * - Sets x-subdomain header for session handling
+ * - Session cookies are shared via domain=.yoohoo.guru
+ * - GlobalNav component uses these headers for navigation state
  */
 const VALID_SUBDOMAINS = new Set([
   // Core services
   "www", "angel", "coach", "heroes", "dashboard",
 
   // Subject-specific subdomains (27 content hubs)
+  // Synced with backend/src/config/subdomains.js
   "art", "auto", "business", "coding", "cooking", "crafts", "data", "design",
   "finance", "fitness", "gardening", "history", "home", "investing",
   "language", "marketing", "math", "mechanical", "music", "photography", "sales",
   "science", "sports", "tech", "wellness", "writing"
 ]);
+
+// Map subdomain to their category for analytics/tracking
+const SUBDOMAIN_CATEGORIES: Record<string, string> = {
+  // Core services
+  coach: 'core', angel: 'core', heroes: 'core', dashboard: 'core',
+  // Technology
+  tech: 'technology', coding: 'technology', data: 'technology',
+  // Creative
+  art: 'creative', design: 'creative', music: 'creative', photography: 'creative',
+  writing: 'creative', crafts: 'creative',
+  // Professional
+  business: 'professional', marketing: 'professional', sales: 'professional',
+  finance: 'professional', investing: 'professional',
+  // Education
+  language: 'education', math: 'education', science: 'education', history: 'education',
+  // Lifestyle
+  fitness: 'lifestyle', cooking: 'lifestyle', wellness: 'lifestyle',
+  gardening: 'lifestyle', home: 'lifestyle',
+  // Specialized
+  auto: 'specialized', mechanical: 'specialized', sports: 'specialized',
+};
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -91,10 +118,15 @@ export function middleware(request: NextRequest) {
   // Handle www/main subdomain - serve directly from pages/ directory
   if (subdomain === "www") {
     // These pages exist at pages/ root level
-    const wwwPaths = ["/", "/login", "/signup", "/dashboard", "/privacy", "/terms", "/about", "/contact"];
-    if (wwwPaths.includes(url.pathname) || url.pathname.startsWith("/dashboard")) {
+    const wwwPaths = ["/", "/login", "/signup", "/dashboard", "/privacy", "/terms", "/about", "/contact", "/browse", "/hubs", "/help", "/how-it-works", "/pricing", "/faq"];
+    if (wwwPaths.includes(url.pathname) || url.pathname.startsWith("/dashboard") || url.pathname.startsWith("/profile") || url.pathname.startsWith("/settings")) {
       console.log(`[YooHoo Middleware] Serving www page: ${url.pathname}`);
-      return NextResponse.next();
+      
+      // Add subdomain headers for session tracking even on www pages
+      const response = NextResponse.next();
+      response.headers.set("x-subdomain", subdomain);
+      response.headers.set("x-subdomain-category", "main");
+      return response;
     }
   }
 
@@ -111,18 +143,26 @@ export function middleware(request: NextRequest) {
 
     console.log(`[YooHoo Middleware] REWRITE: ${hostname}${request.nextUrl.pathname} -> ${rewritePath}`);
 
-    // Add debug headers (visible in browser dev tools)
+    // Add headers for session tracking and GlobalNav integration
     const response = NextResponse.rewrite(url);
+    const category = SUBDOMAIN_CATEGORIES[subdomain] || 'content';
+    
+    // Always set subdomain headers for cross-subdomain session management
+    response.headers.set("x-subdomain", subdomain);
+    response.headers.set("x-subdomain-category", category);
+    
     if (process.env.NODE_ENV === 'development') {
       response.headers.set("x-middleware-rewrite", rewritePath);
-      response.headers.set("x-subdomain", subdomain);
       response.headers.set("x-middleware-invoked", "true");
     }
     return response;
   }
 
   console.log(`[YooHoo Middleware] Pass-through for www`);
-  return NextResponse.next();
+  const response = NextResponse.next();
+  response.headers.set("x-subdomain", "www");
+  response.headers.set("x-subdomain-category", "main");
+  return response;
 }
 
 export const config = {
