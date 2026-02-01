@@ -148,9 +148,9 @@ export default function SiteTextManager() {
 
       setIsEditing(false)
       setEditingText(null)
-      alert('Text updated successfully!')
+      alert('Text updated. Fresh tracks laid.')
     } catch {
-      alert('Failed to update text')
+      alert('We could not update that text. Please try again.')
     }
   }
 

@@ -172,7 +172,7 @@ export default function DisputeResolution() {
     if (!disputeData.sessionId || !disputeData.disputeType || !disputeData.description) {
       setMessage({
         type: 'error',
-        text: 'Please fill in all required fields.'
+        text: 'Looks like a few tracks are missing. Please fill in the required fields.'
       });
       setIsSubmitting(false);
       return;
@@ -184,7 +184,7 @@ export default function DisputeResolution() {
       
       setMessage({
         type: 'success',
-        text: 'Dispute submitted successfully! Our team will review your case within 48 hours.'
+        text: 'Your dispute is in our paws. We will review it within 48 hours.'
       });
       
       // Reset form
@@ -197,7 +197,7 @@ export default function DisputeResolution() {
     } catch {
       setMessage({
         type: 'error',
-        text: 'Failed to submit dispute. Please try again.'
+        text: 'We could not send that dispute down the trail. Please try again.'
       });
     } finally {
       setIsSubmitting(false);

@@ -252,12 +252,12 @@ export default function HeroGuruSettings() {
 
       setMessage({
         type: 'success',
-        text: 'Hero Guru settings saved successfully!',
+        text: 'Hero Guru settings saved. Your den is in order.',
       });
     } catch {
       setMessage({
         type: 'error',
-        text: 'Failed to save settings. Please try again.',
+        text: 'We could not save those settings this time. Please try again.',
       });
     } finally {
       setIsSaving(false);

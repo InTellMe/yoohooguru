@@ -317,12 +317,12 @@ export default function ProfileManager() {
       
       setMessage({
         type: 'success',
-        text: 'Profile updated successfully!'
+        text: 'Profile updated. Looking good, neighbor!'
       });
     } catch {
       setMessage({
         type: 'error',
-        text: 'Failed to update profile. Please try again.'
+        text: 'We could not update your profile this time. Please try again.'
       });
     } finally {
       setIsSubmitting(false);

@@ -286,7 +286,7 @@ export default function SkillSearch() {
             </Link>
           ))
         ) : (
-          <NoResults>No skills found matching your criteria.</NoResults>
+          <NoResults>No skills found on this trail. Try widening your search.</NoResults>
         )}
       </ResultsContainer>
     </SearchContainer>

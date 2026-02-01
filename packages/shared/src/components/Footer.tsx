@@ -58,19 +58,19 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
               <div>
                 <div className="text-xl font-bold text-white">YooHoo.Guru</div>
                 <div className="text-sm text-gray-400">
-                  {currentDomain === 'main' ? 'Skill Sharing Platform' : `${currentDomain.charAt(0).toUpperCase() + currentDomain.slice(1)} Hub`}
+                  {currentDomain === 'main' ? 'Sasquatch Family Network' : `${currentDomain.charAt(0).toUpperCase() + currentDomain.slice(1)} Hub`}
                 </div>
               </div>
             </div>
             
             <p className="body-small text-gray-400 mb-6 max-w-md">
-              A neighborhood-based skill-sharing platform where users exchange skills, 
-              discover purpose, and create exponential community impact.
+              A neighbor-first network led by the Tennessee Sasquatch family where people exchange skills,
+              find purpose, and lift their communities.
             </p>
 
             {/* Newsletter Signup */}
             <div className="mb-6">
-              <h4 className="text-white font-semibold mb-3">Stay Connected</h4>
+              <h4 className="text-white font-semibold mb-3">Stay on the Trail</h4>
               <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
@@ -82,7 +82,7 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
                 </button>
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                Get weekly updates on new experts and learning opportunities.
+                Get weekly trailside updates from the family on new experts and learning opportunities.
               </p>
             </div>
 
