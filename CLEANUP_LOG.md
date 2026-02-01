@@ -22,3 +22,4 @@
 | vercel-setup-checklist.md | Updated domain source-of-truth | Yes (.bak) | 396 -> 396 |
 | docs/FIREBASE_SETUP.md | Replaced API key examples | Yes (.bak) | 158 -> 158 |
 | backend/tests/secrets-integration.test.js | Replaced key-like placeholders | Yes (.bak) | 183 -> 183 |
+| .archive/completed-fixes/CI_WORKFLOW_FIX_DOCUMENT.md | Sanitized key-like placeholders | Yes (.bak) | 828 -> 828 |
