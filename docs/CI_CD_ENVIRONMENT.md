@@ -85,7 +85,7 @@ env:
 env:
   NODE_ENV: test  # REQUIRED - must be 'test' for backend tests
   FIREBASE_PROJECT_ID: yoohoo-dev-testing
-  FIREBASE_API_KEY: AIzaSyTest1234567890KeyForCITestingOnly
+  FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY_TEST }}
   SESSION_SECRET: ${{ steps.generate-session-secret.outputs.session-secret }}
   # Emulator variables - ONLY when NODE_ENV=test
   FIRESTORE_EMULATOR_HOST: localhost:8080
