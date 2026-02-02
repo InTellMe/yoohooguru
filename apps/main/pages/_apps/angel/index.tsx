@@ -6,6 +6,7 @@ import { ServiceCard } from '../../../components/ui/Card';
 import { TestimonialCarousel } from '../../../components/ui/TestimonialCard';
 import Button from '../../../components/ui/Button';
 import MapSection from '../../../components/location/MapSection';
+import SasquatchHeroImage from '../../../components/SasquatchHeroImage';
 
 export default function AngelList() {
   // Featured services
@@ -190,6 +191,12 @@ export default function AngelList() {
 
         {/* Hero Section */}
         <HeroSection />
+
+        <section className="py-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SasquatchHeroImage subdomain="angel" />
+          </div>
+        </section>
 
         {/* Find Local Gigs Map Section */}
         <MapSection

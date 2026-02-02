@@ -2,6 +2,7 @@ import { Header, Footer } from '@yoohooguru/shared';
 import Seo from '../../../components/Seo';
 import Link from 'next/link';
 import { OrbitronContainer, OrbitronCard } from '../../../components/orbitron';
+import SasquatchHeroImage from '../../../components/SasquatchHeroImage';
 
 export default function HeroGurusHome() {
   return (
@@ -31,6 +32,7 @@ export default function HeroGurusHome() {
                 Free accessible learning for people with disabilities. Our platform connects adaptive learners
                 with volunteer Gurus who provide specialized, accommodating instruction.
               </p>
+              <SasquatchHeroImage subdomain="heroes" />
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/skills">
                   <button className="px-8 py-4 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-400 hover:to-pink-500 text-white font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">

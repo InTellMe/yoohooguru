@@ -6,6 +6,7 @@ import { ExpertCard } from '../../../components/ui/Card';
 import { TestimonialCarousel } from '../../../components/ui/TestimonialCard';
 import Button from '../../../components/ui/Button';
 import MapSection from '../../../components/location/MapSection';
+import SasquatchHeroImage from '../../../components/SasquatchHeroImage';
 
 export default function CoachGuru() {
   // Featured experts
@@ -162,6 +163,12 @@ export default function CoachGuru() {
 
         {/* Hero Section */}
         <HeroSection />
+
+        <section className="py-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SasquatchHeroImage subdomain="coach" />
+          </div>
+        </section>
 
         {/* Find Expert Gurus Map Section */}
         <MapSection

@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         // Enhanced Orbitron Theme Colors - Dark Indigo + Hunter Green blend
-        primarydark: '#1e2749',     // Dark indigo
-        secondarydark: '#2C5530',   // Hunter green dark
-        tertiarydark: '#2d3561',    // Medium dark indigo
+        primarydark: '#0b0f16',     // Deep midnight
+        secondarydark: '#111a23',   // Dark slate
+        tertiarydark: '#141b2b',    // Blue charcoal
 
         // Accent Colors - Dark Indigo + Hunter Green Palette
         indigo: {
@@ -104,8 +104,8 @@ module.exports = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         
         // Enhanced gradients - Dark Indigo + Hunter Green
-        'orbitron-primary': 'linear-gradient(135deg, #1e2749 0%, #2d3561 50%, #2C5530 100%)',
-        'orbitron-secondary': 'linear-gradient(135deg, #2C5530 0%, #2d3561 50%, #1e2749 100%)',
+        'orbitron-primary': 'linear-gradient(135deg, #0b0f16 0%, #141b2b 50%, #111a23 100%)',
+        'orbitron-secondary': 'linear-gradient(135deg, #111a23 0%, #141b2b 50%, #0b0f16 100%)',
         'orbitron-hero': 'linear-gradient(to right, var(--tw-gradient-stops))',
         'gradient-subtle': 'linear-gradient(135deg, rgba(53, 94, 59, 0.1) 0%, rgba(61, 61, 107, 0.1) 100%)',
         'gradient-strong': 'linear-gradient(135deg, rgba(53, 94, 59, 0.2) 0%, rgba(61, 61, 107, 0.2) 100%)',
