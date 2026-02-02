@@ -88,6 +88,22 @@ Thumbs.db
 deploy-fix.*
 *errors*
 
+# HAR files (may contain sensitive data)
+*.har
+*.har2.har
+
+# Archive/compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large audit/debug output files
+broken_links.md
+job-logs.txt
+*-debug.md
+*-audit-output.*
+
 # Content backup files (keep README)
 backend/backups/*.json
 !backend/backups/README.md
