@@ -153,7 +153,7 @@ export default function JobsPage() {
         <div className="space-y-6">
           {filteredJobs.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-purple-300 text-lg">No jobs found matching your criteria.</p>
+              <p className="text-purple-300 text-lg">No help-wanted tracks match that search. Try widening the trail.</p>
             </div>
           ) : (
             filteredJobs.map((job) => (

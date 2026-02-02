@@ -2,14 +2,20 @@ import React from 'react';
 import Link from 'next/link';
 import ClientNavigation from '../components/ui/ClientNavigation';
 import Seo from '../components/Seo';
+import { buildCloudinaryImageUrl } from '../lib/cloudinary';
 
 export default function Custom404() {
+  const notFoundOgImage =
+    buildCloudinaryImageUrl('sasquatch-family/404-trail', 'f_auto,q_auto,w_1200,h_630,c_fill,g_auto') ||
+    'https://www.yoohoo.guru/assets/og-default.jpg';
+
   return (
     <>
       <Seo
         title="Trail Gone Cold - YooHoo.Guru"
         description="Even our legendary tracking skills couldn't find this page. Let's head back to familiar territory."
         url="https://www.yoohoo.guru/404"
+        image={notFoundOgImage}
       />
 
       <ClientNavigation />

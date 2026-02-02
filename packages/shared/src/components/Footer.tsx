@@ -80,7 +80,7 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
 
             {/* Newsletter Signup */}
             <div className="mb-6">
-              <h4 className="text-white font-semibold mb-3">Stay Connected</h4>
+              <h4 className="text-white font-semibold mb-3">Stay on the Trail</h4>
               <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
@@ -92,7 +92,7 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
                 </button>
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                Get weekly updates on new experts and learning opportunities.
+                Get weekly trailside updates from the family on new experts and learning opportunities.
               </p>
             </div>
 

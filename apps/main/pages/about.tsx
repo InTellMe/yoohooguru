@@ -4,6 +4,7 @@ import React from 'react';
 import Seo from '../components/Seo';
 import Link from 'next/link';
 import Navigation from '../components/ui/Navigation';
+import { buildCloudinaryImageUrl } from '../lib/cloudinary';
 
 // Sasquatch Family Character Data
 const sasquatchFamily = [
@@ -50,13 +51,17 @@ const sasquatchFamily = [
 ];
 
 export default function About() {
+  const aboutOgImage =
+    buildCloudinaryImageUrl('sasquatch-family/about-hero', 'f_auto,q_auto,w_1200,h_630,c_fill,g_auto') ||
+    'https://www.yoohoo.guru/assets/og-about.jpg';
+
   return (
     <>
       <Seo
         title="Meet the Family - YooHoo.Guru"
         description="Meet the Sasquatch family of Silicon Holler, Tennessee - the gentle giants behind YooHoo.Guru who believe in building community through skill sharing."
         url="https://www.yoohoo.guru/about"
-        image="https://www.yoohoo.guru/assets/og-about.jpg"
+        image={aboutOgImage}
       />
 
       <Navigation />
@@ -238,7 +243,7 @@ export default function About() {
               href="/signup"
               className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-lg font-semibold rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-glow-emerald-lg hover:-translate-y-1"
             >
-              <span>Join YooHoo.Guru</span>
+              <span>Join the Family</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
