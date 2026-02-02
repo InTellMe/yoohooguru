@@ -6,6 +6,7 @@ import Navigation from '../../../components/ui/Navigation';
 import { Footer } from '@yoohooguru/shared';
 import { NewsSection } from '../../../components/NewsSection';
 import { BlogList } from '../../../components/BlogList';
+import SasquatchHeroImage from '../../../components/SasquatchHeroImage';
 
 export default function CookingHome() {
   return (
@@ -42,6 +43,7 @@ export default function CookingHome() {
             <p className="text-xl md:text-2xl text-white-80 max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Learn culinary arts from professional chefs and passionate home cooks.
             </p>
+            <SasquatchHeroImage subdomain="cooking" />
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>

@@ -39,7 +39,7 @@ export default function Contact() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: data.message || 'Thank you for contacting us! We\'ll get back to you within 24 hours.',
+          message: data.message || '🏔️ Hot diggity! Your message reached us. Angel\'s already on it — expect a reply within 24 hours. The sweet tea\'s on us!',
         });
         // Reset form
         setFormData({
@@ -52,14 +52,14 @@ export default function Contact() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: data.error || 'Failed to send message. Please try again.',
+          message: data.error || '🐾 Well, that didn\'t go as planned. Let\'s try a different trail — give it another go!',
         });
       }
     } catch (error) {
       console.error('Contact form error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send message. Please check your connection and try again.',
+        message: '🏔️ Whoops! Something went sideways in the holler. Check your connection and let\'s try again.',
       });
     } finally {
       setIsSubmitting(false);
@@ -68,24 +68,24 @@ export default function Contact() {
 
   const contactMethods = [
     {
-      icon: '📧',
-      title: 'Email Support',
-      description: 'Get help via email',
+      icon: '🏔️',
+      title: 'Yoohoo\'s Desk',
+      description: 'General help from the founder',
       contact: 'support@yoohoo.guru',
       link: 'mailto:support@yoohoo.guru',
       responseTime: 'Response within 24 hours'
     },
     {
-      icon: '🛡️',
-      title: 'Safety Team',
-      description: 'Report safety concerns',
+      icon: '👼',
+      title: 'Angel\'s Watch',
+      description: 'Safety & trust concerns',
       contact: 'safety@yoohoo.guru',
       link: 'mailto:safety@yoohoo.guru',
       responseTime: 'Priority response'
     },
     {
-      icon: '💼',
-      title: 'Business Inquiries',
+      icon: '🏋️',
+      title: 'Coach\'s Corner',
       description: 'Partnerships & press',
       contact: 'business@yoohoo.guru',
       link: 'mailto:business@yoohoo.guru',
@@ -95,21 +95,21 @@ export default function Contact() {
 
   const offices = [
     {
-      city: 'San Francisco',
-      address: '123 Market Street, Suite 400',
-      state: 'CA 94103',
+      city: 'Silicon Holler (HQ)',
+      address: 'Between Clingmans Dome & Mt. Le Conte',
+      state: 'Great Smoky Mountains, TN',
+      country: 'United States 🏔️'
+    },
+    {
+      city: 'Nashville',
+      address: '456 Music Row',
+      state: 'TN 37203',
       country: 'United States'
     },
     {
-      city: 'New York',
-      address: '456 Broadway, Floor 12',
-      state: 'NY 10013',
-      country: 'United States'
-    },
-    {
-      city: 'Austin',
-      address: '789 Congress Avenue',
-      state: 'TX 78701',
+      city: 'Knoxville',
+      address: '789 Market Square',
+      state: 'TN 37902',
       country: 'United States'
     }
   ];
@@ -129,11 +129,12 @@ export default function Contact() {
         {/* Hero Section */}
         <section className="section-padding">
           <div className="container-custom text-center">
+            <div className="text-5xl mb-4">🏔️</div>
             <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6">
-              Get in <span className="gradient-text-emerald-blue">Touch</span>
+              Holler at <span className="gradient-text-emerald-blue">the Family</span>
             </h1>
             <p className="text-xl text-white-80 max-w-3xl mx-auto">
-              Have a question, suggestion, or need help? We&apos;d love to hear from you.
+              Got questions? Need a hand? Pull up a chair on our virtual porch — the Sasquatch family is always happy to hear from neighbors.
             </p>
           </div>
         </section>
@@ -165,10 +166,10 @@ export default function Contact() {
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-4xl font-display font-bold text-white mb-4">
-                  Send Us a Message
+                  Drop Us a Line
                 </h2>
                 <p className="text-white-80">
-                  Fill out the form below and we&apos;ll get back to you as soon as possible
+                  Fill out the form below and one of the family will get back to you quicker than a Sasquatch on a fresh trail.
                 </p>
               </div>
 
@@ -293,10 +294,10 @@ export default function Contact() {
           <div className="container-custom">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-display font-bold text-white mb-4">
-                Our Offices
+                Family Headquarters
               </h2>
               <p className="text-white-80">
-                Visit us at one of our locations
+                Stop by if you&apos;re in the neighborhood (we make great blackberry cobbler)
               </p>
             </div>
 
@@ -320,12 +321,12 @@ export default function Contact() {
         <section className="section-padding bg-gradient-to-b from-transparent to-primarydark/50">
           <div className="container-custom text-center">
             <div className="glass-card p-12 rounded-3xl max-w-3xl mx-auto">
-              <div className="text-5xl mb-6">❓</div>
+              <div className="text-5xl mb-6">🦸</div>
               <h2 className="text-3xl font-display font-bold text-white mb-4">
-                Looking for Quick Answers?
+                Need Quick Answers?
               </h2>
               <p className="text-white-80 mb-8">
-                Check out our Help Center for answers to common questions
+                Hero&apos;s put together a help center with answers to the questions we hear most often around the holler.
               </p>
               <Link
                 href="/help"

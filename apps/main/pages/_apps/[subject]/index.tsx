@@ -5,6 +5,7 @@ import { NewsSection } from '../../../components/NewsSection';
 import { BlogList } from '../../../components/BlogList';
 import { getSubjectConfig } from '../../../config/subjects';
 import Button from '../../../components/ui/Button';
+import SasquatchHeroImage from '../../../components/SasquatchHeroImage';
 
 interface SubjectPageProps {
   subject: string;
@@ -116,6 +117,7 @@ const SubjectPage: React.FC<SubjectPageProps> = ({ subject }) => {
             <p className="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto leading-relaxed">
               {subjectData.description}
             </p>
+            <SasquatchHeroImage subdomain={subject} />
             <div className="mt-8 space-x-4">
               <button className="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105">
                 Find {subjectData.title} Experts

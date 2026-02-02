@@ -5,6 +5,7 @@ import Navigation from '../../../components/ui/Navigation';
 import { Footer } from '@yoohooguru/shared';
 import { NewsSection } from '../../../components/NewsSection';
 import { BlogList } from '../../../components/BlogList';
+import SasquatchHeroImage from '../../../components/SasquatchHeroImage';
 
 export default function DataHome() {
   return (
@@ -41,6 +42,7 @@ export default function DataHome() {
             <p className="text-xl md:text-2xl text-white-80 max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Master data analysis, visualization, and data science with industry experts.
             </p>
+            <SasquatchHeroImage subdomain="data" />
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>

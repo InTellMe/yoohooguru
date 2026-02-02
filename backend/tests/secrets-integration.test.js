@@ -43,7 +43,7 @@ describe('Secrets Integration Tests', () => {
       process.env.FIREBASE_API_KEY = 'test_firebase_api_key';
       process.env.FIREBASE_APP_ID = 'test_firebase_app_id';
       process.env.FIREBASE_AUTH_DOMAIN = 'test.firebaseapp.com';
-      process.env.FIREBASE_DATABASE_URL = 'https://test.firebaseio.com';
+      // Note: FIREBASE_DATABASE_URL removed - app uses Firestore exclusively
       process.env.FIREBASE_MESSAGING_SENDER_ID = '123456789';
       process.env.FIREBASE_PROJECT_ID = 'test-project';
       process.env.FIREBASE_STORAGE_BUCKET = 'test.appspot.com';
@@ -71,7 +71,7 @@ describe('Secrets Integration Tests', () => {
       expect(config.firebaseApiKey).toBe('test_firebase_api_key');
       expect(config.firebaseAppId).toBe('test_firebase_app_id');
       expect(config.firebaseAuthDomain).toBe('test.firebaseapp.com');
-      expect(config.firebaseDatabaseUrl).toBe('https://test.firebaseio.com');
+      // Note: firebaseDatabaseUrl removed - app uses Firestore exclusively
       expect(config.firebaseMessagingSenderId).toBe('123456789');
       expect(config.firebaseProjectId).toBe('test-project');
       expect(config.firebaseStorageBucket).toBe('test.appspot.com');

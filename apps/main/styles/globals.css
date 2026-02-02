@@ -18,8 +18,13 @@ body {
 }
 
 body {
-  color: #ffffff;
-  background: linear-gradient(135deg, #1e2749 0%, #2d3561 50%, #2C5530 100%);
+  color: #f8fafc;
+  background-color: #07090d;
+  background-image:
+    radial-gradient(1200px circle at 12% 8%, rgba(255, 255, 255, 0.08), transparent 60%),
+    radial-gradient(900px circle at 85% 18%, rgba(120, 140, 180, 0.16), transparent 55%),
+    radial-gradient(700px circle at 50% 85%, rgba(40, 60, 90, 0.2), transparent 60%),
+    linear-gradient(180deg, #07090d 0%, #0b0f16 100%);
   background-attachment: fixed;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -27,6 +32,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 35%, rgba(255, 255, 255, 0.04) 65%, transparent 100%);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  z-index: 0;
+}
+
+#__next {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
 }
 
 a {
@@ -58,40 +81,40 @@ h1, h2, h3, h4, h5, h6 {
 @layer utilities {
   /* Glass Effects - Premium */
   .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .glass-effect-strong {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.24);
   }
 
   .glass-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 1.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-card:hover {
     background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.22);
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .glass-button {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     transition: all 0.3s ease;
   }
 

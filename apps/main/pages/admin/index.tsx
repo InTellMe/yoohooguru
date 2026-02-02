@@ -165,7 +165,7 @@ export default function AdminDashboard() {
       setFinancials(financialsResponse.data)
       setError(null)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load admin data')
+      setError(err instanceof Error ? err.message : 'We could not load admin data.')
     } finally {
       setLoading(false)
     }
@@ -207,10 +207,10 @@ export default function AdminDashboard() {
         await loadAdminData()
       } else {
         const errorData = await response.json()
-        setError(errorData.error?.message || 'Invalid admin key')
+        setError(errorData.error?.message || 'That key did not match our den logbook.')
       }
     } catch {
-      setError('Failed to authenticate')
+      setError('We could not authenticate you right now.')
     }
   }
 
@@ -222,14 +222,14 @@ export default function AdminDashboard() {
       })
 
       if (response.ok) {
-        setActionMessage('Content curation triggered successfully')
+        setActionMessage('Curation is underway; our scouts are on the trail.')
         await loadAdminData()
       } else {
         const errorData = await response.json()
-        setActionMessage(`Failed to trigger curation: ${errorData.error?.message || 'Unknown error'}`)
+        setActionMessage(`Curation hit a snag: ${errorData.error?.message || 'Unknown error'}`)
       }
     } catch {
-      setActionMessage('Failed to trigger curation')
+      setActionMessage('Curation hit a snag. Please try again.')
     }
   }
 
@@ -244,13 +244,13 @@ export default function AdminDashboard() {
 
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.error?.message || 'Failed to remove content')
+        throw new Error(errorData.error?.message || 'We could not remove that content.')
       }
 
       setContent(prev => prev.filter(item => item.id !== entry.id))
-      setActionMessage('Content removed successfully')
+      setActionMessage('Content removed; the trail is clear.')
     } catch (err) {
-      setActionMessage(err instanceof Error ? err.message : 'Removal failed')
+      setActionMessage(err instanceof Error ? err.message : 'Removal hit a snag.')
     }
   }
 
