@@ -39,7 +39,7 @@ export default function Contact() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: data.message || 'Thank you for contacting us! We\'ll get back to you within 24 hours.',
+          message: data.message || 'Thanks for reaching out! We\'ll howl back within 24 hours.',
         });
         // Reset form
         setFormData({
@@ -52,14 +52,14 @@ export default function Contact() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: data.error || 'Failed to send message. Please try again.',
+          message: data.error || 'We could not send that message down the trail. Please try again.',
         });
       }
     } catch (error) {
       console.error('Contact form error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send message. Please check your connection and try again.',
+        message: 'Our signal got tangled in the trees. Please check your connection and try again.',
       });
     } finally {
       setIsSubmitting(false);

@@ -163,7 +163,7 @@ export default function SessionPage() {
   useEffect(() => {
     // Validate session ID to prevent SSRF/path traversal
     if (id && !isValidId(id)) {
-      setError('Invalid session identifier');
+      setError('That session trail does not look right.');
     }
   }, [id]);
 
@@ -181,7 +181,7 @@ export default function SessionPage() {
   const handleSaveNotes = () => {
     console.log('Saving notes:', notes);
     // In a real app, you would save notes to your backend
-    alert('Notes saved!');
+    alert('Notes saved in the den.');
   };
 
   const handleBackToDashboard = () => {

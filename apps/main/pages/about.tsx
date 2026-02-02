@@ -4,15 +4,20 @@ import React from 'react';
 import Seo from '../components/Seo';
 import Link from 'next/link';
 import Navigation from '../components/ui/Navigation';
+import { buildCloudinaryImageUrl } from '../lib/cloudinary';
 
 export default function About() {
+  const aboutOgImage =
+    buildCloudinaryImageUrl('sasquatch-family/about-hero', 'f_auto,q_auto,w_1200,h_630,c_fill,g_auto') ||
+    'https://www.yoohoo.guru/assets/og-about.jpg';
+
   return (
     <>
       <Seo
-        title="About Us - YooHoo.Guru"
-        description="Learn about YooHoo.Guru's mission to build community through skill sharing and democratize knowledge through the exchange of skills and expertise."
+        title="About the Sasquatch Family - YooHoo.Guru"
+        description="Meet Angel, Coach, Yoohoo, and Hero—the Sasquatch family in Tennessee behind YooHoo.Guru, a neighbor-first network for learning, teaching, and local help."
         url="https://www.yoohoo.guru/about"
-        image="https://www.yoohoo.guru/assets/og-about.jpg"
+        image={aboutOgImage}
       />
 
       <Navigation />
@@ -23,11 +28,11 @@ export default function About() {
           <div className="container-custom">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6">
-                Building Community Through
-                <span className="block gradient-text-emerald-blue mt-2">Skill Sharing</span>
+                Meet the Sasquatch Family
+                <span className="block gradient-text-emerald-blue mt-2">Angel, Coach, Yoohoo, and Hero</span>
               </h1>
               <p className="text-xl text-white-80 leading-relaxed">
-                YooHoo.Guru is more than a platform—it&apos;s a movement to democratize knowledge, empower communities, and create meaningful connections through the exchange of skills and expertise.
+                From a cozy cabin in the Tennessee hills, the Sasquatch family runs YooHoo.Guru, a neighbor-first network for learning, teaching, and local help.
               </p>
             </div>
           </div>
@@ -40,10 +45,10 @@ export default function About() {
               <div>
                 <h2 className="text-4xl font-display font-bold text-white mb-6">Our Mission</h2>
                 <p className="text-lg text-white-80 leading-relaxed mb-6">
-                  We believe that everyone has valuable skills to share and knowledge to gain. Our mission is to create a trusted, accessible platform where people can connect, learn, and grow together.
+                  We believe every neighbor has a gift to share. The family built YooHoo.Guru to keep learning personal, trustworthy, and easy to access.
                 </p>
                 <p className="text-lg text-white-80 leading-relaxed">
-                  Whether you&apos;re a professional looking to share your expertise, someone seeking to learn new skills, or a volunteer wanting to make a difference, YooHoo.Guru provides the tools and community to make it happen.
+                  Angel keeps local services kind and reliable, Coach champions skill-sharing sessions, Yoohoo weaves the network, and Hero makes sure every trail stays accessible.
                 </p>
               </div>
               <div className="glass-card p-8 rounded-2xl">
@@ -55,8 +60,8 @@ export default function About() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-2">Community First</h3>
-                      <p className="text-white-80">Building meaningful connections through shared learning experiences.</p>
+                      <h3 className="text-xl font-bold text-white mb-2">Neighbor First</h3>
+                      <p className="text-white-80">Rooted in Tennessee hospitality, we help people meet, learn, and grow together.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -67,7 +72,7 @@ export default function About() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">Trust & Safety</h3>
-                      <p className="text-white-80">Verified profiles, secure payments, and comprehensive safety measures.</p>
+                      <p className="text-white-80">Verified profiles, secure payments, and a watchful Sasquatch crew.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -78,7 +83,7 @@ export default function About() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2">Accessibility</h3>
-                      <p className="text-white-80">Free learning opportunities for people with disabilities through Hero Gurus.</p>
+                      <p className="text-white-80">Hero Gurus keep learning free and welcoming for people with disabilities.</p>
                     </div>
                   </div>
                 </div>
@@ -118,16 +123,16 @@ export default function About() {
         <section className="section-padding bg-gradient-to-b from-transparent to-primarydark/50">
           <div className="container-custom text-center">
             <h2 className="text-4xl font-display font-bold text-white mb-6">
-              Ready to Join Our Community?
+              Ready to Join the Family?
             </h2>
             <p className="text-xl text-white-80 max-w-2xl mx-auto mb-8">
-              Start your journey today and become part of a growing community of learners and teachers.
+              Start your journey today and share skills with neighbors near and far.
             </p>
             <Link
               href="/signup"
               className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-lg font-semibold rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-glow-emerald-lg hover:-translate-y-1"
             >
-              <span>Join YooHoo.Guru</span>
+              <span>Join the Family</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

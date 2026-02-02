@@ -278,7 +278,7 @@ export default function SessionBooking({
     if (!sessionData.date || !sessionData.time) {
       setMessage({
         type: 'error',
-        text: 'Please select a date and time for your session.'
+        text: 'Pick a date and time so we can save your spot on the trail.'
       });
       return;
     }
@@ -292,7 +292,7 @@ export default function SessionBooking({
     } catch {
       setMessage({
         type: 'error',
-        text: 'Failed to book session. Please try again.'
+        text: 'We could not book that session this time. Please try again.'
       });
     }
   };
@@ -306,7 +306,7 @@ export default function SessionBooking({
     return (
       <BookingContainer>
         <SuccessMessage>
-          Session booked successfully! You&apos;ll receive a confirmation email with session details.
+          All set! Your session is booked. Look for a confirmation email soon.
         </SuccessMessage>
       </BookingContainer>
     );
