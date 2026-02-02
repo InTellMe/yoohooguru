@@ -145,7 +145,7 @@ export default function LearningStyleAssessment() {
       setResult(data);
     } catch (error) {
       console.error('Error analyzing learning style:', error);
-      alert('Failed to analyze learning style. Please try again.');
+      alert('We could not read that learning trail. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

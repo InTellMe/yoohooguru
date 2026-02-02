@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { HUB_SUBDOMAINS } from "./config/hubs";
 
 // Force middleware to run on Vercel Edge Runtime
 export const runtime = 'experimental-edge';

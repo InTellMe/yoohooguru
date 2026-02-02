@@ -58,7 +58,7 @@ export default function GuruRatings() {
     
     // Validate guru ID to prevent SSRF/path traversal
     if (id && !isValidId(id)) {
-      setError('Invalid guru identifier');
+      setError('That guru trail does not look right.');
     }
   }, [mounted, id]);
   
@@ -73,7 +73,7 @@ export default function GuruRatings() {
   const handleReviewSubmit = (rating: number, comment: string) => {
     // In a real implementation, this would submit to an API
     console.log(`Submitted review for guru ${id}: ${rating} stars, comment: ${comment}`);
-    alert('Review submitted successfully!');
+    alert('Review submitted—thanks for the feedback, neighbor!');
   };
   
   if (error) {

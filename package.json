@@ -51,7 +51,7 @@
   "license": "MIT",
   "dependencies": {
     "@vercel/speed-insights": "^1.2.0",
-    "next": "14.2.33",
+    "next": "16.1.5",
     "winston": "^3.18.2"
   },
   "devDependencies": {

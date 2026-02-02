@@ -42,7 +42,7 @@ export const BlogList: React.FC<BlogListProps> = ({
   useEffect(() => {
     // Validate subdomain before making the request
     if (!subdomain || !VALID_SUBJECTS.includes(subdomain)) {
-      setError('Invalid subject specified.');
+      setError('That subject trail does not look right.');
       setLoading(false);
       setPosts([]);
       return;
@@ -77,7 +77,7 @@ export const BlogList: React.FC<BlogListProps> = ({
       } catch (err) {
         if (!isCancelled) {
           console.error('Error fetching blog posts:', err);
-          setError('Blog posts temporarily unavailable. Please check back soon.');
+          setError('Our story scouts hit a snag. Please check back soon.');
         }
       } finally {
         if (!isCancelled) {
@@ -132,7 +132,7 @@ export const BlogList: React.FC<BlogListProps> = ({
     return (
       <div className="blog-list empty">
         <h2>Latest Blog Posts</h2>
-        <p>No blog posts available at this time. Check back soon!</p>
+        <p>No stories on the stump yet. Check back soon!</p>
       </div>
     );
   }

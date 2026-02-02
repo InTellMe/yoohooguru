@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         // Enhanced Orbitron Theme Colors - Dark Indigo + Hunter Green blend
-        primarydark: '#1e2749',     // Dark indigo
-        secondarydark: '#2C5530',   // Hunter green dark
-        tertiarydark: '#2d3561',    // Medium dark indigo
+        primarydark: '#0b0f16',     // Deep midnight
+        secondarydark: '#111a23',   // Dark slate
+        tertiarydark: '#141b2b',    // Blue charcoal
 
         // Accent Colors - Dark Indigo + Hunter Green Palette
         indigo: {
@@ -47,6 +47,26 @@ module.exports = {
           500: '#f97316',
           600: '#ea580c',
         },
+
+        // Luxury palette - deep neutrals + metallics
+        luxury: {
+          obsidian: '#0b0f19',
+          midnight: '#0f172a',
+          noir: '#111827',
+          graphite: '#1f2937',
+          pewter: '#6b7280',
+          pearl: '#f7f2e8',
+          champagne: '#f1d7a1',
+          gold: '#d4af37',
+          rose: '#e7c3b2',
+          platinum: '#e5e7eb',
+        },
+        gold: {
+          300: '#f6e3a1',
+          400: '#e7c96f',
+          500: '#d4af37',
+          600: '#b8912c',
+        },
         
         // Glass morphism and overlays - enhanced
         white: {
@@ -69,6 +89,8 @@ module.exports = {
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
         'hero-xs': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
@@ -82,8 +104,8 @@ module.exports = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         
         // Enhanced gradients - Dark Indigo + Hunter Green
-        'orbitron-primary': 'linear-gradient(135deg, #1e2749 0%, #2d3561 50%, #2C5530 100%)',
-        'orbitron-secondary': 'linear-gradient(135deg, #2C5530 0%, #2d3561 50%, #1e2749 100%)',
+        'orbitron-primary': 'linear-gradient(135deg, #0b0f16 0%, #141b2b 50%, #111a23 100%)',
+        'orbitron-secondary': 'linear-gradient(135deg, #111a23 0%, #141b2b 50%, #0b0f16 100%)',
         'orbitron-hero': 'linear-gradient(to right, var(--tw-gradient-stops))',
         'gradient-subtle': 'linear-gradient(135deg, rgba(53, 94, 59, 0.1) 0%, rgba(61, 61, 107, 0.1) 100%)',
         'gradient-strong': 'linear-gradient(135deg, rgba(53, 94, 59, 0.2) 0%, rgba(61, 61, 107, 0.2) 100%)',
@@ -201,6 +223,8 @@ module.exports = {
         'inner-glow': 'inset 0 0 20px rgba(16, 185, 129, 0.1)',
         'card-hover': '0 20px 40px rgba(0, 0, 0, 0.3)',
         'button-glow': '0 0 30px rgba(16, 185, 129, 0.4)',
+        'luxe-soft': '0 16px 40px rgba(11, 15, 25, 0.35)',
+        'luxe-gold': '0 0 32px rgba(212, 175, 55, 0.25)',
       },
       spacing: {
         '18': '4.5rem',

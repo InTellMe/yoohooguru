@@ -24,7 +24,7 @@ export default async function handler(
     // Validate required fields
     if (!name || !email || !message) {
       return res.status(400).json({ 
-        error: 'Missing required fields',
+        error: 'We are missing a few required details',
         details: 'Name, email, and message are required'
       });
     }
@@ -38,14 +38,14 @@ export default async function handler(
     // Validate email format (safe from ReDoS)
     if (!isValidEmail(sanitizedEmail)) {
       return res.status(400).json({ 
-        error: 'Invalid email format'
+        error: 'That email does not look quite right'
       });
     }
 
     // Validate name length
     if (!isValidLength(sanitizedName, 1, 100)) {
       return res.status(400).json({ 
-        error: 'Invalid name',
+        error: 'That name is a bit too short or long',
         details: 'Name must be between 1 and 100 characters'
       });
     }
@@ -53,7 +53,7 @@ export default async function handler(
     // Validate message length
     if (!isValidLength(sanitizedMessage, 10, 5000)) {
       return res.status(400).json({ 
-        error: 'Invalid message length',
+        error: 'That message needs a little more detail',
         details: 'Message must be between 10 and 5000 characters'
       });
     }
@@ -78,7 +78,7 @@ export default async function handler(
     // Return success response
     return res.status(200).json({
       success: true,
-      message: 'Thank you for contacting us! We\'ll get back to you within 24 hours.',
+      message: 'Thanks for reaching out! We\'ll howl back within 24 hours.',
       data: {
         name: sanitizedName,
         email: sanitizedEmail,
@@ -91,7 +91,7 @@ export default async function handler(
     console.error('Contact form error:', error);
     return res.status(500).json({
       error: 'Internal server error',
-      message: 'Failed to process contact form submission'
+      message: 'We hit a snag in the woods. Please try again soon.'
     });
   }
 }

@@ -264,7 +264,7 @@ export default function PublicProfilesPage() {
         active: !prev[profileType].active,
       },
     }));
-    setMessage({ text: `${profileType === 'guru' ? 'Guru' : 'Angel'} profile visibility updated`, type: 'success' });
+    setMessage({ text: `${profileType === 'guru' ? 'Guru' : 'Angel'} visibility updated. Your trail is set.`, type: 'success' });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, profileType: PublicProfileType) => {
@@ -273,9 +273,9 @@ export default function PublicProfilesPage() {
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 600));
-      setMessage({ text: `${profileType === 'guru' ? 'Guru' : 'Angel'} public profile saved`, type: 'success' });
+      setMessage({ text: `${profileType === 'guru' ? 'Guru' : 'Angel'} profile saved. Ready for visitors.`, type: 'success' });
     } catch {
-      setMessage({ text: 'Unable to save profile. Please try again.', type: 'error' });
+      setMessage({ text: 'We could not save that profile this time. Please try again.', type: 'error' });
     }
   };
 
