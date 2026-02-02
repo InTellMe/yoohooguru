@@ -344,7 +344,7 @@ export default function HeroGuruSessionBooking({
     if (!sessionData.date || !sessionData.time) {
       setMessage({
         type: 'error',
-        text: 'Please select a date and time for your session.'
+        text: 'Pick a date and time so we can save your spot on the trail.'
       });
       return;
     }
@@ -373,7 +373,7 @@ export default function HeroGuruSessionBooking({
       if (response.ok) {
         setMessage({
           type: 'success',
-          text: 'Session booked successfully! You\'ll receive a confirmation email with session details.'
+          text: 'All set! Your Hero session is booked. Look for a confirmation email soon.'
         });
         setTimeout(() => {
           onBookingSuccess();
@@ -382,13 +382,13 @@ export default function HeroGuruSessionBooking({
         const errorData = await response.json();
         setMessage({
           type: 'error',
-          text: errorData.error?.message || 'Failed to book session. Please try again.'
+          text: errorData.error?.message || 'We could not book that session this time. Please try again.'
         });
       }
     } catch {
       setMessage({
         type: 'error',
-        text: 'An error occurred while booking the session. Please try again.'
+        text: 'Something tripped us up while booking. Please try again.'
       });
     } finally {
       setIsSubmitting(false);

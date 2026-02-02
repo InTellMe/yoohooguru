@@ -93,7 +93,7 @@ describe('Firebase Configuration', () => {
     process.env.FIREBASE_PROJECT_ID = 'test-project';
     process.env.FIREBASE_API_KEY = 'test-api-key';
     process.env.FIREBASE_AUTH_DOMAIN = 'test-project.firebaseapp.com';
-    process.env.FIREBASE_DATABASE_URL = 'https://test-project.firebaseio.com';
+    // Note: FIREBASE_DATABASE_URL removed - app uses Firestore exclusively
     process.env.FIREBASE_STORAGE_BUCKET = 'test-project.appspot.com';
     process.env.FIREBASE_MESSAGING_SENDER_ID = '123456789';
     process.env.FIREBASE_APP_ID = '1:123456789:web:abcdef';
@@ -103,7 +103,7 @@ describe('Firebase Configuration', () => {
     expect(config.firebaseProjectId).toBe('test-project');
     expect(config.firebaseApiKey).toBe('test-api-key');
     expect(config.firebaseAuthDomain).toBe('test-project.firebaseapp.com');
-    expect(config.firebaseDatabaseUrl).toBe('https://test-project.firebaseio.com');
+    // Note: firebaseDatabaseUrl removed - app uses Firestore exclusively
     expect(config.firebaseStorageBucket).toBe('test-project.appspot.com');
     expect(config.firebaseMessagingSenderId).toBe('123456789');
     expect(config.firebaseAppId).toBe('1:123456789:web:abcdef');
