@@ -47,6 +47,26 @@ module.exports = {
           500: '#f97316',
           600: '#ea580c',
         },
+
+        // Luxury palette - deep neutrals + metallics
+        luxury: {
+          obsidian: '#0b0f19',
+          midnight: '#0f172a',
+          noir: '#111827',
+          graphite: '#1f2937',
+          pewter: '#6b7280',
+          pearl: '#f7f2e8',
+          champagne: '#f1d7a1',
+          gold: '#d4af37',
+          rose: '#e7c3b2',
+          platinum: '#e5e7eb',
+        },
+        gold: {
+          300: '#f6e3a1',
+          400: '#e7c96f',
+          500: '#d4af37',
+          600: '#b8912c',
+        },
         
         // Glass morphism and overlays - enhanced
         white: {
@@ -69,6 +89,8 @@ module.exports = {
       fontFamily: {
         orbitron: ['Orbitron', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
         'hero-xs': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
@@ -201,6 +223,8 @@ module.exports = {
         'inner-glow': 'inset 0 0 20px rgba(16, 185, 129, 0.1)',
         'card-hover': '0 20px 40px rgba(0, 0, 0, 0.3)',
         'button-glow': '0 0 30px rgba(16, 185, 129, 0.4)',
+        'luxe-soft': '0 16px 40px rgba(11, 15, 25, 0.35)',
+        'luxe-gold': '0 0 32px rgba(212, 175, 55, 0.25)',
       },
       spacing: {
         '18': '4.5rem',
