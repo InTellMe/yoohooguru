@@ -37,11 +37,11 @@ export default function PostJob() {
       if (response.ok) {
         router.push('/jobs');
       } else {
-        alert('Failed to post job. Please try again.');
+        alert('We could not post that job this time. Please try again.');
       }
     } catch (error) {
       console.error('Error posting job:', error);
-      alert('An error occurred. Please try again.');
+      alert('We hit a snag in the woods. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

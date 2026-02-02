@@ -154,7 +154,7 @@ const CheckoutForm = ({ paymentData, onSuccess }: CheckoutFormProps) => {
     const cardElement = elements.getElement(CardElement);
     
     if (!cardElement) {
-      setError('Card element not found');
+      setError('We could not find your card details. Please try again.');
       return;
     }
     
@@ -169,7 +169,7 @@ const CheckoutForm = ({ paymentData, onSuccess }: CheckoutFormProps) => {
       // Simulate payment success
       onSuccess();
     } catch (err) {
-      setError('Payment failed. Please try again.');
+      setError('That payment did not go through. Please try again.');
       console.error(err);
     } finally {
       setProcessing(false);
@@ -254,7 +254,7 @@ export default function StripePayment({
     return (
       <PaymentContainer>
         <SuccessMessage>
-          Payment successful! Your session has been booked.
+          Payment received. Your session is booked, and a confirmation is on the way.
         </SuccessMessage>
       </PaymentContainer>
     );

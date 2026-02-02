@@ -19,9 +19,9 @@ process.env.FIREBASE_AUTH_EMULATOR_HOST = process.env.FIREBASE_AUTH_EMULATOR_HOS
 process.env.FIRESTORE_EMULATOR_HOST = process.env.FIRESTORE_EMULATOR_HOST || 'localhost:8080';
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-jwt-secret-key-for-ci-cd-testing-only-not-for-production';
 process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'test-session-secret-key-for-ci-cd-testing-only-not-for-production';
-process.env.STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
-process.env.STRIPE_PUBLISHABLE_KEY = process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_placeholder';
-process.env.STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test_placeholder';
+process.env.STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || 'stripe_secret_key_placeholder';
+process.env.STRIPE_PUBLISHABLE_KEY = process.env.STRIPE_PUBLISHABLE_KEY || 'stripe_publishable_key_placeholder';
+process.env.STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET || 'stripe_webhook_secret_placeholder';
 process.env.CORS_ORIGIN_PRODUCTION = process.env.CORS_ORIGIN_PRODUCTION || 'http://localhost:3000,http://127.0.0.1:3000';
 
 // Mock firebase-admin before it's imported by other modules

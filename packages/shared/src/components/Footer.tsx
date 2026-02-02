@@ -49,28 +49,38 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Brand Section */}
+          {/* Brand Section - Sasquatch Family */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-lg flex items-center justify-center text-white font-bold text-xl mr-3">
-                YG
+                🏔️
               </div>
               <div>
                 <div className="text-xl font-bold text-white">YooHoo.Guru</div>
                 <div className="text-sm text-gray-400">
-                  {currentDomain === 'main' ? 'Skill Sharing Platform' : `${currentDomain.charAt(0).toUpperCase() + currentDomain.slice(1)} Hub`}
+                  {currentDomain === 'main' ? 'From Silicon Holler, TN' : `${currentDomain.charAt(0).toUpperCase() + currentDomain.slice(1)} Hub`}
                 </div>
               </div>
             </div>
             
-            <p className="body-small text-gray-400 mb-6 max-w-md">
-              A neighborhood-based skill-sharing platform where users exchange skills, 
-              discover purpose, and create exponential community impact.
+            <p className="body-small text-gray-400 mb-4 max-w-md">
+              Built by a family of friendly Sasquatches deep in the Tennessee mountains, 
+              YooHoo.Guru connects neighbors, shares skills, and proves that the best 
+              kind of magic is the kind folks don&apos;t notice.
             </p>
+            
+            {/* Sasquatch Family Mini Icons */}
+            <div className="flex items-center space-x-3 mb-6 text-sm">
+              <span title="Yoohoo - The Founder">🏔️</span>
+              <span title="Angel - Community Guardian">👼</span>
+              <span title="Coach - Skill Master">🏋️</span>
+              <span title="Hero - Accessibility Champion">🦸</span>
+              <span className="text-gray-500">— The Family</span>
+            </div>
 
             {/* Newsletter Signup */}
             <div className="mb-6">
-              <h4 className="text-white font-semibold mb-3">Stay Connected</h4>
+              <h4 className="text-white font-semibold mb-3">Stay on the Trail</h4>
               <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
@@ -82,7 +92,7 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
                 </button>
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                Get weekly updates on new experts and learning opportunities.
+                Get weekly trailside updates from the family on new experts and learning opportunities.
               </p>
             </div>
 
@@ -203,18 +213,18 @@ const Footer: React.FC<{ currentDomain?: string }> = ({ currentDomain = 'main' }
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom Bar - Sasquatch Theme */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-gray-400 mb-4 md:mb-0">
-              © {currentYear} YooHoo.Guru. All rights reserved.
+              © {currentYear} YooHoo.Guru — Made with 🏔️ in Silicon Holler, TN
             </div>
             
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <div className="flex items-center">
-                <span className="mr-2">🌍</span>
-                <span>Available globally</span>
+                <span className="mr-2">🐾</span>
+                <span>Family operated</span>
               </div>
               <div className="flex items-center">
                 <span className="mr-2">🔒</span>

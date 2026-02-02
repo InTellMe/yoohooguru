@@ -21,7 +21,7 @@ export default async function handler(
     // Validate required fields
     if (!email) {
       return res.status(400).json({ 
-        error: 'Missing required field',
+        error: 'We are missing your email',
         details: 'Email is required'
       });
     }
@@ -33,14 +33,14 @@ export default async function handler(
     // Validate email format (safe from ReDoS)
     if (!isValidEmail(sanitizedEmail)) {
       return res.status(400).json({ 
-        error: 'Invalid email format'
+        error: 'That email does not look quite right'
       });
     }
 
     // Validate name if provided
     if (sanitizedName && !isValidLength(sanitizedName, 1, 100)) {
       return res.status(400).json({ 
-        error: 'Invalid name',
+        error: 'That name is a bit too short or long',
         details: 'Name must be between 1 and 100 characters'
       });
     }
@@ -62,7 +62,7 @@ export default async function handler(
     // Return success response
     return res.status(200).json({
       success: true,
-      message: 'Successfully subscribed to newsletter!',
+      message: 'You are on the list. Expect trailside updates soon.',
       data: {
         email: sanitizedEmail,
         timestamp: new Date().toISOString()
@@ -73,7 +73,7 @@ export default async function handler(
     console.error('Newsletter subscription error:', error);
     return res.status(500).json({
       error: 'Internal server error',
-      message: 'Failed to process newsletter subscription'
+      message: 'We hit a snag in the woods. Please try again soon.'
     });
   }
 }

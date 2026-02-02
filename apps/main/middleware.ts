@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { HUB_SUBDOMAINS } from "./config/hubs";
 
 // Force middleware to run on Vercel Edge Runtime
 export const runtime = 'experimental-edge';
@@ -15,16 +16,9 @@ export const runtime = 'experimental-edge';
  * - Subdomain pages are at pages/_apps/{subdomain}/index.tsx
  * - Middleware rewrites subdomain requests to /_apps/{subdomain}/ paths
  */
-const VALID_SUBDOMAINS = new Set([
-  // Core services
-  "www", "angel", "coach", "heroes", "dashboard",
-
-  // Subject-specific subdomains (27 content hubs)
-  "art", "auto", "business", "coding", "cooking", "crafts", "data", "design",
-  "finance", "fitness", "gardening", "history", "home", "investing",
-  "language", "marketing", "math", "mechanical", "music", "photography", "sales",
-  "science", "sports", "tech", "wellness", "writing"
-]);
+const SYSTEM_SUBDOMAINS = ["www", "dashboard"];
+// Hub subdomains are centralized in config to prevent drift.
+const VALID_SUBDOMAINS = new Set([...SYSTEM_SUBDOMAINS, ...HUB_SUBDOMAINS]);
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();

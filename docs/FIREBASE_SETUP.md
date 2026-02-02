@@ -34,7 +34,7 @@ This guide will help you set up Firebase authentication for the yoohoo.guru appl
 
 ```javascript
 const firebaseConfig = {
-  apiKey: "AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXX",
+  apiKey: "FIREBASE_API_KEY_PLACEHOLDER",
   authDomain: "your-project.firebaseapp.com",
   projectId: "your-project-id",
   storageBucket: "your-project.appspot.com",
@@ -50,7 +50,7 @@ const firebaseConfig = {
 
 ```env
 # Firebase Configuration
-FIREBASE_API_KEY=AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXX
+FIREBASE_API_KEY=FIREBASE_API_KEY_PLACEHOLDER
 FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
 FIREBASE_PROJECT_ID=your-project-id
 FIREBASE_STORAGE_BUCKET=your-project.appspot.com
@@ -58,7 +58,7 @@ FIREBASE_MESSAGING_SENDER_ID=123456789012
 FIREBASE_APP_ID=1:123456789012:web:abcdef1234567890
 
 # React App Firebase Variables (required for frontend)
-REACT_APP_FIREBASE_API_KEY=AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXX
+REACT_APP_FIREBASE_API_KEY=FIREBASE_API_KEY_PLACEHOLDER
 REACT_APP_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
 REACT_APP_FIREBASE_PROJECT_ID=your-project-id
 REACT_APP_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
