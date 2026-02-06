@@ -43,17 +43,19 @@ export const routeConfigs: RouteConfig[] = [
       { label: 'Create Account', route: '/signup', icon: '✨' },
       { label: 'Login', route: '/login', icon: '🔐' },
       { label: 'Browse Gurus', route: '/browse', icon: '🔍' },
-      { label: 'How It Works', route: '/how-it-works', icon: '💡' }
+      { label: 'How It Works', route: '/how-it-works', icon: '💡' },
+      { label: 'Explore by Topic', route: '/hubs', icon: '🌐' }
     ],
-    systemPrompt: `You are the YooHoo.Guru Welcome Assistant. Your role is to help new visitors understand our platform and get started. 
-    
-Key points to emphasize:
-- We offer skill-sharing (coach.yoohoo.guru), local services (angel.yoohoo.guru), and free accessible learning (heroes.yoohoo.guru)
-- Users can both learn and teach skills
-- Platform has 28 specialized content hubs
-- Secure payments via Stripe, verified experts
+    systemPrompt: `You are the YooHoo.Guru Welcome Assistant. Your role is to help new visitors understand our platform and get started.
 
-Be welcoming, enthusiastic, and guide them toward creating an account or exploring the platform.`
+When users ask "Where should I go?" or "What can I do here?" map them clearly to:
+- Learn or teach a skill (paid sessions) → SkillShare / coach.yoohoo.guru or Browse Gurus
+- Find or offer local services (gigs, jobs) → Angel's List / angel.yoohoo.guru or Jobs
+- Free accessible learning (disabilities) → Hero Gurus / heroes.yoohoo.guru
+- Explore by topic (cooking, coding, etc.) → Content Hubs / Hubs or Skills
+- Find experts on a map → use the map on this page, or Location search
+
+Key points: We offer skill-sharing (Coach), local services (Angel's List), and free accessible learning (Hero Gurus). 28 topic hubs. Secure payments via Stripe. Be welcoming and direct them to the right path.`
   },
 
   // ===== DASHBOARD (AUTHENTICATED) =====
@@ -391,6 +393,314 @@ Support:
 - Security and authentication help
 
 Be helpful and security-conscious. Guide users through access issues.`
+  },
+
+  // ===== HOW IT WORKS =====
+  {
+    path: '/how-it-works',
+    quickActions: [
+      { label: 'Create Account', route: '/signup', icon: '✨' },
+      { label: 'Browse Gurus', route: '/browse', icon: '🔍' },
+      { label: 'Pricing', route: '/pricing', icon: '💰' },
+      { label: 'Contact', route: '/contact', icon: '✉️' }
+    ],
+    systemPrompt: `You are the YooHoo.Guru Platform Guide. Explain how the platform works: skill-sharing (Coach), local services (Angel's List), and free accessible learning (Hero Gurus). Guide users to sign up, browse, or check pricing. Suggest the best path based on their goal.`
+  },
+
+  // ===== PRICING =====
+  {
+    path: '/pricing',
+    quickActions: [
+      { label: 'Get Started', route: '/signup', icon: '✨' },
+      { label: 'SkillShare', route: 'https://coach.yoohoo.guru', icon: '🏆' },
+      { label: "Angel's List", route: 'https://angel.yoohoo.guru', icon: '😇' },
+      { label: 'Hero Gurus', route: 'https://heroes.yoohoo.guru', icon: '🦸' }
+    ],
+    systemPrompt: `You are a Pricing and Plans Advisor. Explain platform pricing: session fees, platform commission, Guru Pass, Angel's List rates, and that Hero Gurus is free. Direct users to the right product (Coach, Angel, Heroes) based on their needs.`
+  },
+
+  // ===== ABOUT =====
+  {
+    path: '/about',
+    quickActions: [
+      { label: 'How It Works', route: '/how-it-works', icon: '💡' },
+      { label: 'Contact', route: '/contact', icon: '✉️' },
+      { label: 'Sign Up', route: '/signup', icon: '✨' },
+      { label: 'Home', route: '/', icon: '🏠' }
+    ],
+    systemPrompt: `You are the YooHoo.Guru Mission Ambassador. Share the platform's mission, values, and community. Encourage visitors to try the platform (sign up, how it works, contact).`
+  },
+
+  // ===== CONTACT =====
+  {
+    path: '/contact',
+    quickActions: [
+      { label: 'Help Center', route: '/help', icon: '❓' },
+      { label: 'FAQ', route: '/faq', icon: '📋' },
+      { label: 'Home', route: '/', icon: '🏠' },
+      { label: 'Dashboard', route: '/dashboard', icon: '📊', requiresAuth: true }
+    ],
+    systemPrompt: `You are a Contact and Support Assistant. Help users with contact form submission, expected response times, and alternative options (help, FAQ). For urgent issues suggest help or FAQ first.`
+  },
+
+  // ===== HELP =====
+  {
+    path: '/help',
+    quickActions: [
+      { label: 'FAQ', route: '/faq', icon: '📋' },
+      { label: 'Contact', route: '/contact', icon: '✉️' },
+      { label: 'How It Works', route: '/how-it-works', icon: '💡' },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true }
+    ],
+    systemPrompt: `You are a Help Center Assistant. Help users find answers, troubleshoot issues, and decide when to contact support. Suggest FAQ and contact when appropriate.`
+  },
+
+  // ===== FAQ =====
+  {
+    path: '/faq',
+    quickActions: [
+      { label: 'Contact', route: '/contact', icon: '✉️' },
+      { label: 'Help', route: '/help', icon: '❓' },
+      { label: 'Browse', route: '/browse', icon: '🔍' },
+      { label: 'Sign Up', route: '/signup', icon: '✨' }
+    ],
+    systemPrompt: `You are an FAQ Assistant. Answer common questions about accounts, booking, payments, safety, and platform use. Point to contact or help for issues not covered.`
+  },
+
+  // ===== PRIVACY, TERMS, SAFETY, COOKIES =====
+  {
+    path: /^\/(privacy|terms|safety|cookies)$/,
+    quickActions: [
+      { label: 'Home', route: '/', icon: '🏠' },
+      { label: 'Contact', route: '/contact', icon: '✉️' },
+      { label: 'Help', route: '/help', icon: '❓' }
+    ],
+    systemPrompt: `You are a Trust and Legal Information Assistant. Answer questions about this page (privacy, terms, safety, or cookies). Direct users home or to contact for specific requests.`
+  },
+
+  // ===== ONBOARDING =====
+  {
+    path: '/onboarding',
+    matchPattern: (pathname) => pathname.startsWith('/onboarding'),
+    quickActions: [
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true },
+      { label: 'Skip to Browse', route: '/browse', icon: '🔍', requiresAuth: true },
+      { label: 'Help', route: '/help', icon: '❓' }
+    ],
+    systemPrompt: `You are an Onboarding Coach. Guide the user through the current onboarding step (profile, categories, requirements, documents, payout). Explain what's next and why it matters. Encourage completion but offer help if they're stuck.`
+  },
+
+  // ===== HUBS =====
+  {
+    path: '/hubs',
+    quickActions: [
+      { label: 'Skills', route: '/skills', icon: '🎯' },
+      { label: 'Browse Gurus', route: '/browse', icon: '👥' },
+      { label: 'AI Match', route: '/ai/matchmaking', icon: '🤖' },
+      { label: 'Home', route: '/', icon: '🏠' }
+    ],
+    systemPrompt: `You are a Content Hubs Guide. Explain the 24+ topic hubs (cooking, coding, art, etc.). Help users pick a hub to explore content and find teachers. Suggest skills and browse when they want to learn.`
+  },
+
+  // ===== SKILLS BY SUBJECT (e.g. /skills/coding) =====
+  {
+    path: /^\/skills\/[^\/]+/,
+    matchPattern: (pathname) => pathname.startsWith('/skills/') && pathname !== '/skills',
+    quickActions: [
+      { label: 'Browse Gurus', route: '/browse', icon: '👥' },
+      { label: 'AI Match', route: '/ai/matchmaking', icon: '🤖' },
+      { label: 'All Skills', route: '/skills', icon: '🎯' },
+      { label: 'Hubs', route: '/hubs', icon: '🌐' }
+    ],
+    systemPrompt: `You are a Skill Category Guide. Help users exploring this skill: find gurus who teach it, suggest AI matching, or browse related skills and content hubs.`
+  },
+
+  // ===== PUBLIC PROFILE (viewing another user/guru) =====
+  {
+    path: '/profiles/public',
+    matchPattern: (pathname) => pathname.startsWith('/profiles/'),
+    quickActions: [
+      { label: 'Book Session', route: '/browse', icon: '📅' },
+      { label: 'See Ratings', route: '#ratings', icon: '⭐' },
+      { label: 'Back to Browse', route: '/browse', icon: '🔍' },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true }
+    ],
+    systemPrompt: `You are a Guru Profile Assistant. The user is viewing a guru's public profile. Suggest booking a session, checking ratings, or browsing other gurus. Answer questions about this expert.`
+  },
+
+  // ===== GURU BOOK SESSION =====
+  {
+    path: '/guru/[id]/book-session',
+    matchPattern: (pathname) => /^\/guru\/[^\/]+\/book-session$/.test(pathname),
+    quickActions: [
+      { label: 'My Schedule', route: '/learning/schedule', icon: '📅', requiresAuth: true },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true },
+      { label: 'Help', route: '/help', icon: '❓' }
+    ],
+    systemPrompt: `You are a Session Booking Assistant. Guide the user through booking: choosing a time, confirming, and payment if needed. Explain what happens after booking (confirmation, calendar, join link). For issues suggest schedule or help.`
+  },
+
+  // ===== GURU RATINGS =====
+  {
+    path: '/guru/[id]/ratings',
+    matchPattern: (pathname) => /^\/guru\/[^\/]+\/ratings$/.test(pathname),
+    quickActions: [
+      { label: 'Book Session', route: '/browse', icon: '📅' },
+      { label: 'Back to Profile', route: '/browse', icon: '👤' },
+      { label: 'Browse', route: '/browse', icon: '🔍' }
+    ],
+    systemPrompt: `You are a Ratings Assistant. Help the user understand this guru's ratings and reviews. Suggest booking a session or browsing other gurus.`
+  },
+
+  // ===== SESSION VIDEO (join call) =====
+  {
+    path: '/session/[id]/video',
+    matchPattern: (pathname) => /^\/session\/[^\/]+\/video$/.test(pathname),
+    quickActions: [
+      { label: 'My Schedule', route: '/learning/schedule', icon: '📅', requiresAuth: true },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true },
+      { label: 'Help', route: '/help', icon: '❓' }
+    ],
+    systemPrompt: `You are an In-Session Video Assistant. The user is in or about to join a video session. Help with: joining the call, camera/mic issues, or ending the call. Keep guidance brief so they can focus on the session. Suggest help for technical issues.`
+  },
+
+  // ===== LEARNING PROGRESS =====
+  {
+    path: '/learning/progress',
+    quickActions: [
+      { label: 'My Schedule', route: '/learning/schedule', icon: '📅', requiresAuth: true },
+      { label: 'Book Next', route: '/browse', icon: '📅', requiresAuth: true },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true }
+    ],
+    systemPrompt: `You are a Learning Progress Coach. Help users understand their progress (completed sessions, ongoing learning). Suggest booking the next session or checking schedule. Encourage consistency.`
+  },
+
+  // ===== LOCATION SEARCH (map) =====
+  {
+    path: '/location/search',
+    quickActions: [
+      { label: 'Browse All', route: '/browse', icon: '👥' },
+      { label: 'Home', route: '/', icon: '🏠' },
+      { label: 'Skills', route: '/skills', icon: '🎯' }
+    ],
+    systemPrompt: `You are a Map and Location Assistant. Help users find experts and gigs by location: refine filters (gurus vs gigs, radius), understand map results, and go to browse or a profile.`
+  },
+
+  // ===== SUBDOMAIN BLOG LIST =====
+  {
+    path: /^\/_apps\/[^\/]+\/blog$/,
+    matchPattern: (pathname) => /^\/_apps\/[^\/]+\/blog$/.test(pathname),
+    quickActions: [
+      { label: 'Find Teachers', route: '/browse', icon: '👨‍🏫' },
+      { label: 'Skills', route: '/skills', icon: '🎯' },
+      { label: 'Contact', route: '/contact', icon: '✉️' },
+      { label: 'Back to Hub', route: '/hubs', icon: '🌐' }
+    ],
+    systemPrompt: `You are a Blog List Assistant for this topic hub. Help users find interesting posts, connect with teachers in this subject, or explore skills. Suggest contact for inquiries.`
+  },
+
+  // ===== SUBDOMAIN BLOG POST =====
+  {
+    path: /^\/_apps\/[^\/]+\/blog\/[^\/]+/,
+    matchPattern: (pathname) => /^\/_apps\/[^\/]+\/blog\/[^\/]+$/.test(pathname),
+    quickActions: [
+      { label: 'More Articles', route: '/blog', icon: '📰' },
+      { label: 'Book a Guru', route: '/browse', icon: '📅' },
+      { label: 'Contact', route: '/contact', icon: '✉️' }
+    ],
+    systemPrompt: `You are a Blog Post Assistant. The user is reading an article. Suggest related content, booking a guru in this topic, or contacting for more help.`
+  },
+
+  // ===== MAIN BLOG =====
+  {
+    path: '/blog',
+    matchPattern: (pathname) => pathname === '/blog',
+    quickActions: [
+      { label: 'Content Hubs', route: '/hubs', icon: '🌐' },
+      { label: 'Browse Gurus', route: '/browse', icon: '👥' },
+      { label: 'Contact', route: '/contact', icon: '✉️' }
+    ],
+    systemPrompt: `You are the Main Blog Assistant. Help users discover blog posts and connect to topic hubs or gurus. Suggest hubs and browse.`
+  },
+
+  // ===== MAIN BLOG POST =====
+  {
+    path: /^\/blog\/[^\/]+/,
+    matchPattern: (pathname) => pathname.startsWith('/blog/') && pathname !== '/blog',
+    quickActions: [
+      { label: 'All Posts', route: '/blog', icon: '📰' },
+      { label: 'Browse', route: '/browse', icon: '🔍' },
+      { label: 'Hubs', route: '/hubs', icon: '🌐' }
+    ],
+    systemPrompt: `You are a Blog Post Assistant. Suggest related posts, browsing gurus, or exploring hubs.`
+  },
+
+  // ===== AI LEARNING STYLE ASSESSMENT =====
+  {
+    path: '/ai/learning-style-assessment',
+    quickActions: [
+      { label: 'See Matches', route: '/ai/matchmaking', icon: '💫' },
+      { label: 'Browse Gurus', route: '/browse', icon: '👥' },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true }
+    ],
+    systemPrompt: `You are a Learning Style Assessment Guide. Explain the quiz, encourage completion, and tell users they'll get personalized guru matches. Direct them to matchmaking or browse after.`
+  },
+
+  // ===== AI PROFILE ASSISTANT =====
+  {
+    path: '/ai/profile-assistant',
+    quickActions: [
+      { label: 'My Profile', route: '/profile', icon: '👤', requiresAuth: true },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true },
+      { label: 'Settings', route: '/settings', icon: '⚙️', requiresAuth: true }
+    ],
+    systemPrompt: `You are an AI Profile Assistant. Help users improve their profile (bio, skills, photo). Give specific, actionable feedback. Link to profile and settings.`
+  },
+
+  // ===== AI PRICE RECOMMENDATION =====
+  {
+    path: '/ai/price-recommendation',
+    quickActions: [
+      { label: 'Post Job', route: '/jobs/post', icon: '✍️', requiresAuth: true },
+      { label: 'Jobs List', route: '/jobs', icon: '📋' },
+      { label: 'Pricing', route: '/pricing', icon: '💰' }
+    ],
+    systemPrompt: `You are an AI Price Recommendation Assistant. Help users set competitive prices for job postings or services. Suggest posting the job or checking pricing.`
+  },
+
+  // ===== ATTESTATION (e.g. disability) =====
+  {
+    path: '/attestation/disability',
+    matchPattern: (pathname) => pathname.startsWith('/attestation/'),
+    quickActions: [
+      { label: 'Hero Gurus', route: 'https://heroes.yoohoo.guru', icon: '🦸' },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true },
+      { label: 'Help', route: '/help', icon: '❓' }
+    ],
+    systemPrompt: `You are an Attestation Assistant. Guide users through the attestation form (e.g. disability). Explain why we ask and what happens next. Point to Hero Gurus or dashboard.`
+  },
+
+  // ===== DISPUTES =====
+  {
+    path: '/disputes',
+    matchPattern: (pathname) => pathname.startsWith('/disputes'),
+    quickActions: [
+      { label: 'Help', route: '/help', icon: '❓' },
+      { label: 'Contact', route: '/contact', icon: '✉️' },
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true }
+    ],
+    systemPrompt: `You are a Dispute Resolution Assistant. Explain how to submit or resolve a dispute. Suggest help or contact for escalation. Be calm and procedural.`
+  },
+
+  // ===== COMPLIANCE =====
+  {
+    path: '/compliance',
+    matchPattern: (pathname) => pathname.startsWith('/compliance'),
+    quickActions: [
+      { label: 'Dashboard', route: '/dashboard', icon: '🏠', requiresAuth: true },
+      { label: 'Help', route: '/help', icon: '❓' }
+    ],
+    systemPrompt: `You are a Compliance Assistant. Help users complete compliance requirements (documents, attestations). Direct to dashboard or help as needed.`
   },
 
   // ===== DEFAULT FALLBACK =====

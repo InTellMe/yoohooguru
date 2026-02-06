@@ -42,6 +42,13 @@ export default function ContextNavigator() {
     userRole
   );
 
+  // Listen for global open request (e.g. from homepage "Ask the assistant" CTA)
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-context-navigator', handleOpen);
+    return () => window.removeEventListener('open-context-navigator', handleOpen);
+  }, []);
+
   // Auto-scroll to bottom when new messages appear
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

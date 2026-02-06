@@ -128,6 +128,22 @@ export default function Home() {
         {/* Hero Section */}
         <HeroSection />
 
+        {/* AI Assistant CTA - visible entry point for "Where should I go?" */}
+        <section className="container-custom py-4">
+          <button
+            type="button"
+            onClick={() => typeof window !== 'undefined' && window.dispatchEvent(new CustomEvent('open-context-navigator'))}
+            className="w-full max-w-xl mx-auto flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/20 text-white/90 hover:from-blue-600/30 hover:to-purple-600/30 hover:border-white/30 transition-all duration-300"
+            aria-label="Open AI assistant to get guidance on where to go"
+          >
+            <span className="text-2xl" aria-hidden>💬</span>
+            <span className="font-medium">Not sure where to go? Ask the assistant</span>
+            <svg className="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </button>
+        </section>
+
         {/* Searchable Map Section - Front and Center */}
         <MapSection
           title="Find Experts & Opportunities Near You"

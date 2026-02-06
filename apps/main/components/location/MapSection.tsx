@@ -161,6 +161,8 @@ const SAMPLE_GIGS: MapMarker[] = [
   },
 ];
 
+const DEFAULT_CENTER = { lat: 39.8283, lng: -98.5795 }; // US center for initial load
+
 export default function MapSection({
   title = 'Find Experts & Gigs Near You',
   subtitle = 'Search for skilled professionals and available opportunities in your area',
@@ -176,48 +178,74 @@ export default function MapSection({
   const [center, setCenter] = useState<{ lat: number; lng: number } | null>(null);
   const [radius, setRadius] = useState(25);
   const [selectedCategory, setSelectedCategory] = useState(category || 'all');
+  const [mapTypeFilter, setMapTypeFilter] = useState<'all' | 'gurus' | 'gigs'>(mapType);
 
-  // Fetch markers based on location and filters
+  useEffect(() => {
+    setMapTypeFilter(mapType);
+  }, [mapType]);
+
+  // Fetch markers from locations API, fallback to sample data
   const fetchMarkers = useCallback(async () => {
     setLoading(true);
     setError(null);
+    const searchCenter = center ?? DEFAULT_CENTER;
 
     try {
-      // In production, this would be an API call
-      // For now, use sample data
-      let filteredMarkers: MapMarker[] = [];
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.yoohoo.guru';
+      const params = new URLSearchParams({
+        lat: String(searchCenter.lat),
+        lng: String(searchCenter.lng),
+        radius: String(radius),
+        limit: '50',
+      });
 
-      if (mapType === 'all') {
-        filteredMarkers = [...SAMPLE_GURUS, ...SAMPLE_GIGS];
-      } else if (mapType === 'gurus') {
-        filteredMarkers = SAMPLE_GURUS;
-      } else {
-        filteredMarkers = SAMPLE_GIGS;
+      let apiMarkers: MapMarker[] = [];
+      const endpoint =
+        mapTypeFilter === 'gurus'
+          ? `${baseUrl}/api/locations/search/gurus?${params}`
+          : mapTypeFilter === 'gigs'
+            ? `${baseUrl}/api/locations/search/gigs?${params}`
+            : `${baseUrl}/api/locations/search/all?${params}`;
+
+      const res = await fetch(endpoint);
+      if (res.ok) {
+        const json = await res.json();
+        const raw = json.data?.markers ?? json.markers ?? [];
+        apiMarkers = raw.map((m: Record<string, unknown>) => ({
+          id: String(m.id),
+          lat: Number(m.lat),
+          lng: Number(m.lng),
+          title: String(m.title ?? ''),
+          description: m.description != null ? String(m.description) : undefined,
+          type: (m.type as MapMarker['type']) ?? 'guru',
+          category: m.category != null ? String(m.category) : undefined,
+          rating: m.rating != null ? Number(m.rating) : undefined,
+          hourlyRate: m.hourlyRate != null ? Number(m.hourlyRate) : undefined,
+          skills: Array.isArray(m.skills) ? m.skills.map(String) : undefined,
+          imageUrl: m.imageUrl != null ? String(m.imageUrl) : undefined,
+          href: m.href != null ? String(m.href) : undefined,
+        }));
       }
 
-      // Filter by category if specified
+      let filteredMarkers: MapMarker[] =
+        apiMarkers.length > 0 ? apiMarkers : mapTypeFilter === 'all' ? [...SAMPLE_GURUS, ...SAMPLE_GIGS] : mapTypeFilter === 'gurus' ? SAMPLE_GURUS : SAMPLE_GIGS;
+
       if (selectedCategory && selectedCategory !== 'all') {
         filteredMarkers = filteredMarkers.filter(m =>
           m.skills?.some(s => s.toLowerCase().includes(selectedCategory.toLowerCase()))
         );
       }
 
-      // Filter by radius if center is set
-      if (center) {
-        filteredMarkers = filteredMarkers.filter(m => {
-          const distance = calculateDistance(center.lat, center.lng, m.lat, m.lng);
-          return distance <= radius;
-        });
-      }
-
       setMarkers(filteredMarkers);
     } catch (err) {
       console.error('Failed to fetch markers:', err);
       setError('Failed to load map data');
+      const fallback = mapTypeFilter === 'all' ? [...SAMPLE_GURUS, ...SAMPLE_GIGS] : mapTypeFilter === 'gurus' ? SAMPLE_GURUS : SAMPLE_GIGS;
+      setMarkers(fallback);
     } finally {
       setLoading(false);
     }
-  }, [mapType, selectedCategory, center, radius]);
+  }, [mapTypeFilter, selectedCategory, center, radius]);
 
   // Calculate distance between two points in miles (Haversine formula)
   const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
@@ -298,9 +326,9 @@ export default function MapSection({
             {/* Map Type Toggle */}
             <div className="flex rounded-lg overflow-hidden border border-gray-700">
               <button
-                onClick={() => setMarkers([...SAMPLE_GURUS, ...SAMPLE_GIGS])}
+                onClick={() => setMapTypeFilter('all')}
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  mapType === 'all'
+                  mapTypeFilter === 'all'
                     ? 'bg-emerald-500 text-white'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
@@ -308,9 +336,9 @@ export default function MapSection({
                 All
               </button>
               <button
-                onClick={() => setMarkers(SAMPLE_GURUS)}
+                onClick={() => setMapTypeFilter('gurus')}
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  mapType === 'gurus'
+                  mapTypeFilter === 'gurus'
                     ? 'bg-emerald-500 text-white'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
@@ -318,9 +346,9 @@ export default function MapSection({
                 Gurus
               </button>
               <button
-                onClick={() => setMarkers(SAMPLE_GIGS)}
+                onClick={() => setMapTypeFilter('gigs')}
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  mapType === 'gigs'
+                  mapTypeFilter === 'gigs'
                     ? 'bg-blue-500 text-white'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                 }`}
